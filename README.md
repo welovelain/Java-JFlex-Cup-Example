@@ -12,76 +12,120 @@ begin, end, exit, substring, length, position, concatenate.
 
 
 The language grammar:
+
+
 *** arithmetic operators
+
 num_op = "+" | "-" | "*" | "/" | "%"
 
 
 *** numerical expression, which value is a number
+
 num_expr = NUM | IDENT
+
 | "readint"
+
 | "-" num_expr
+
 | num_expr num_op num_expr
+
 | "(" num_expr ")"
+
 | "length(" str_expr ")"
+
 | "position(" str_expr "," str_expr ")"
 
 
+
 *** expression, which value is a string
+
 str_expr = STRING | IDENT
+
 | "readstr"
+
 | "concatenate(" str_expr "," str_expr ")"
+
 | "substring(" str_expr "," num_expr "," num_expr ")"
 
 
+
 *** logical operators
+
 bool_op = "and" | "or"
 
 
 *** logical relations
+
 num_rel = "=" | "<" | "<=" | ">" | ">=" | "<>"
+
+
 str_rel = "==" | "!="
+
+
 bool_expr = "true" | "false"
+
 | "(" bool_expr ")"
+
 | "not" bool_expr
+
 | bool_expr bool_op bool_expr
+
 | num_expr num_rel num_expr
+
 | str_expr str_rel str_expr
 
 
 *** basic constucts
+
 simple_instr = assign_stat
+
 | if_stat
+
 | while_stat
+
 | "begin" instr "end"
+
 | output_stat
+
 | "exit"
 
 
+
 *** instuction sequence
+
 instr = instr ";" simple_instr | simple_instr
 
 
 *** assignment
 assign_stat = IDENT ":=" num_expr
+
 | IDENT ":=" str_expr
 
 
+
 *** conditional statement
+
 if_stat = "if" bool_expr "then" simple_instr
+
 | "if" bool_expr "then" simple_instr "else" simple_instr
 
 
 *** "while" loop
+
 while_stat = "while" bool_expr "do" simple_instr
+
 | "do" simple_instr "while" bool_expr
 
 
 *** printing to the screen
+
 output_stat = "print(" num_expr ")"
+
 | "print(" str_expr ")"
 
 
 *** progam itself
+
 program = instr
 
 
