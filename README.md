@@ -109,7 +109,7 @@ program = instr
 Additional explanations:
 
 
-- There are two data typed poes – integer values with the sign (with a range corresponding to
+- There are two data types – integer values with the sign (with a range corresponding to
 signed int), and strings (corresponding to char*). The variables are not declarable,
 the first usage determines the type (uninitialized numerical value equals to 0, uninitialized
 string contains an empty string). Checking the datatype should be done at usage.
